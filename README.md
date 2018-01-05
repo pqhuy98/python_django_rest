@@ -7,4 +7,4 @@ User and group are django's provided models.
 Item objects are item that are sold in the marketplace.  
 Comment objects are comments made by a specific user about a specific item.  
   
-See `tutorial/quickstart/models.py` for more details.
+See [tutorial/quickstart/models.py](https://github.com/pqhuy98/python_django_rest/blob/e1601124/tutorial/quickstart/models.py) for more details.
