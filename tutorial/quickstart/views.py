@@ -1,25 +1,24 @@
 from django.contrib.auth.models import User, Group
-from models import Company
 from rest_framework import viewsets
-from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, CompanySerializer
+from tutorial.quickstart import serializers
+from .models import Item, Comment
+
 
 class UserViewSet(viewsets.ModelViewSet):
-    """ 
-    API endpoint that allows users to be viewed or edited.
-    """ 
     queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+    serializer_class = serializers.UserSerializer
+
 
 class GroupViewSet(viewsets.ModelViewSet):
-    """ 
-    API endpoint that allows groups to be viewed or edited.
-    """ 
     queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    serializer_class = serializers.GroupSerializer
 
-class CompanyViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows companies to be viewed or edited.
-    """
-    queryset = Company.objects.all()
-    serializer_class = CompanySerializer
+
+class ItemViewSet(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = serializers.ItemSerializer
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = serializers.CommentSerializer
