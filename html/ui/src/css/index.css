@@ -1,0 +1,83 @@
+.item-list-container {
+	position: absolute;
+	width: 500px;
+	left: 50%;
+	-ms-transform: translateX(-50%); /* IE 9 */
+	-webkit-transform: translateX(-50%); /* Safari */
+	transform: translateX(-50%);
+}
+.item-container {
+	position: relative;
+	padding: 0px 10px 40px 10px;
+	border-top: 4px solid gray;
+}
+.item-info {
+	margin: 10px 0px 5px 0px;
+}
+.post-by {
+	margin-bottom: 20px; 
+}
+.item-name, .item-price, .item-amount {
+	padding-right: 10px;
+}
+.item-price, .item-amount {
+	padding-left: 10px;
+}
+
+.comment-group {
+	margin: 10px 0px 10px 0px;
+	padding-left: 20px;
+}
+.comment-writer-username {
+	font-weight: bold;
+}
+.comment-container {
+	position: relative;
+	border: 1px solid black;
+	padding: 10px;
+	margin: 10px 0px 10px 0px;
+}
+.comment-subject, .comment-body {
+	padding: 10px 10px 10px 0px;
+}
+.delete {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	cursor: pointer;
+	padding: 0px 5px 0px 5px;
+}
+
+
+.comment-form {
+	margin-left: 10px;
+	width: 300px;
+}
+.comment-form-title, .comment-form-score, .comment-form-body {
+	width: 100%;
+	padding: 5px 0px 5px 0px;
+}
+
+.item-form-name, .item-form-price, .item-form-amount {
+	width: 100%;
+	padding: 5px 0px 5px 0px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea {
+	width: 100%;
+}
+
+.logout {
+	top: 0px;
+	right: 10px;
+	position: absolute;
+	cursor: pointer;
+	color: #2196F3;
+}
+
+.login-form {
+	width: 120px;
+}

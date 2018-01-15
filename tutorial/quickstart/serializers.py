@@ -18,10 +18,10 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class ItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Item
-        fields = ('url', 'name', 'user', 'price', 'amount', 'sold')
+        fields = ('url', 'name', 'user', 'price', 'amount', 'sold', 'created_at', 'updated_at')
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
-        fields = ('url', 'writer', 'to', 'header', 'body', 'score')
+        fields = ('url', 'writer', 'to', 'header', 'body', 'score', 'created_at', 'updated_at')
