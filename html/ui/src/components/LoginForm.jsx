@@ -48,7 +48,7 @@ class LoginForm extends Component {
 					/>
 				</div>
 				<button onClick={() => this.onSubmit()} className="comment-form-submit">
-					Post !
+					Login
 				</button>
 			</div>
 		);

@@ -48,7 +48,8 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(function (response) {
 	return response;
 }, function (error) {
-	if (error.status == 403) {
+	console.log(error.response);
+	if (error.response.status == 403) {
 		store.dispatch(a.clearLogin());
 	} else {
 		return Promise.reject(error);
