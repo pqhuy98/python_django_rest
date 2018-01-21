@@ -11,9 +11,10 @@ See [tutorial/quickstart/models.py](https://github.com/pqhuy98/python_django_res
   
 Play with it : [API](https://pqhuy98.hopto.org/SilkRoad/api/) and [webpage](https://pqhuy98.hopto.org/SilkRoad/page/).
 
-To run the database, you must provide database's info as system variables.
+To run the database, you must provide database's info as system variables.  
+  
+Linux :  
 ```
-Linux :
 MYSQL_DATABASE=??? \
 MYSQL_USER=??? \
 MYSQL_PASSWORD=??? \
@@ -33,3 +34,5 @@ python -B manage.py runserver 0.0.0.0:8001
 ```
 
 Set `HTTPS` to `true` if you want to enable HTTPS (certificate required).
+
+To build the GUI (React + Redux), go to `html/ui/`, run `npm install` then `npm start`.
