@@ -41,6 +41,6 @@ python -B manage.py runserver 0.0.0.0:8000
 ```
 
 Set `HTTPS` to `true` if you want to enable HTTPS (certificate required).  
-Then visit [localhost:8000/SilkRoad/api/](localhost:8000/SilkRoad/api/) to access the API.  
+Then visit [localhost:8000/SilkRoad/api/](http://localhost:8000/SilkRoad/api/) to access the API.  
 
 To build the GUI (React + Redux), go to `html/ui/`, run `npm install` then `npm start`.
