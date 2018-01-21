@@ -12,8 +12,8 @@ class LoginForm extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			username: "root",
-			password: "BigPassword",
+			username: "",
+			password: "",
 		};
 	}
 
