@@ -11,8 +11,11 @@ See [models.py](https://github.com/pqhuy98/python_django_rest/blob/e1601124/tuto
   
 Play with it : [API](https://pqhuy98.hopto.org/SilkRoad/api/) and [webpage](https://pqhuy98.hopto.org/SilkRoad/page/).
 
-To run the database, you must provide database's info as system variables.  
-  
+To run the database, you must install package corsheaders and provide database's info as system variables.  
+
+Package `corsheaders` : run `pip install django-cors-headers` (Python 2.x.x) or `pip install corsheaders` (python 3.x.x).  
+
+Provide database's info as system variables :  
 Linux :  
 ```
 MYSQL_DATABASE=??? \
