@@ -11,31 +11,36 @@ See [models.py](https://github.com/pqhuy98/python_django_rest/blob/e1601124/tuto
   
 Play with it : [API](https://pqhuy98.hopto.org/SilkRoad/api/) and [webpage](https://pqhuy98.hopto.org/SilkRoad/page/).
 
-To run the database, you must install package corsheaders and provide database's info as system variables.  
+To run the database, you must install package `corsheaders` and provide database's info as system variables.  
 
 Package `corsheaders` : run `pip install django-cors-headers` (Python 2.x.x) or `pip install corsheaders` (python 3.x.x).  
 
-Provide database's info as system variables :  
+Provide database's info as system variables (substitude `???`s with your credential) :  
 Linux :  
 ```
-MYSQL_DATABASE=??? \
-MYSQL_USER=??? \
-MYSQL_PASSWORD=??? \
-MYSQL_HOST=??? \
-HTTPS="false" \
+export MYSQL_DATABASE=???
+export MYSQL_USER=???
+export MYSQL_PASSWORD=???
+export MYSQL_HOST=???
+export HTTPS="false"
+python -B manage.py makemigrations
+python -B manage.py migrate
 python -B manage.py runserver 0.0.0.0:8000
 ```
 
 Windows CMD :
 ```
-set "MYSQL_DATABASE=???" && ^
-set "MYSQL_USER=???" && ^
-set "MYSQL_PASSWORD=???" && ^
-set "MYSQL_HOST=???" && ^
-set "HTTPS=false" && ^
-python -B manage.py runserver 0.0.0.0:8001
+set "MYSQL_DATABASE=???"
+set "MYSQL_USER=???"
+set "MYSQL_PASSWORD=???"
+set "MYSQL_HOST=???"
+set "HTTPS=false"
+python -B manage.py makemigrations
+python -B manage.py migrate
+python -B manage.py runserver 0.0.0.0:8000
 ```
 
-Set `HTTPS` to `true` if you want to enable HTTPS (certificate required).
+Set `HTTPS` to `true` if you want to enable HTTPS (certificate required).  
+Then visit `localhost:8000/SilkRoad/api/` to access the API.  
 
 To build the GUI (React + Redux), go to `html/ui/`, run `npm install` then `npm start`.
