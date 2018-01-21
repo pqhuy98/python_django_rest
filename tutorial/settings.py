@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -75,17 +75,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tutorial.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') if os.environ["HTTPS"] == "true" else None
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'e1601124_marketplace',
-        'USER': 'e1601124',
-        'PASSWORD': 'sUxQQpnZx7rQ',
-        'HOST': 'mysql.cc.puv.fi',
+        'NAME': os.environ['MYSQL_DATABASE'],
+        'USER': os.environ['MYSQL_USER'],
+        'PASSWORD': os.environ['MYSQL_PASSWORD'],
+        'HOST': os.environ['MYSQL_HOST'],
         'PORT': '3306',
     }
 }
@@ -127,11 +125,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/SilkRoad/api/static/'
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAdminUser',
-    # ],
     'PAGE_SIZE': 10
 }

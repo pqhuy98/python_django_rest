@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TextareaAutosize from 'react-autosize-textarea';
 
 import * as a from '../actions/data';
 import Comment from './Comment';
@@ -10,7 +11,7 @@ class CommentForm extends Component {
 		this.state = {
 			header: "",
 			body: "",
-			score: 3,
+			score: "",
 		};
 	}
 
@@ -34,7 +35,7 @@ class CommentForm extends Component {
 	onSubmit() {
 		var me = this.getMe();
 		var cmt = {
-			writer: me.url,
+			owner: me.url,
 			to: this.props.item.url,
 			header: this.state.header,
 			body: this.state.body,
@@ -47,7 +48,14 @@ class CommentForm extends Component {
 		return (
 			<div className="comment-form">
 				<div>
-				Write a comment for <b>{this.props.item.name}</b>:
+				<b>Write a comment :</b>
+				</div>
+				<div className="comment-form-score">
+					<span className="score-label">Stars : (?? / 5.0) </span>
+					<input type="number" min="0" max="5" placeholder="Stars"
+						value={this.state.score}
+						onChange={(e) => this.handleChange("score", e)}
+					/>
 				</div>
 				<div className="comment-form-title">
 					<span className="label">Title : </span>
@@ -56,16 +64,9 @@ class CommentForm extends Component {
 						onChange={(e) => this.handleChange("header", e)}
 					/>
 				</div>
-				<div className="comment-form-score">
-					<span className="score-label">Score : (?? / 5.0) </span>
-					<input type="number" min="0" max="5" placeholder="Score"
-						value={this.state.score}
-						onChange={(e) => this.handleChange("score", e)}
-					/>
-				</div>
 				<div className="comment-form-body">
 					<span className="label">Comment : </span>
-					<textarea placeholder="Have a lot to say ? Put it here !"
+					<TextareaAutosize placeholder="Have a lot to say ? Put it here !"
 						value={this.state.body}
 						onChange={(e) => this.handleChange("body", e)}
 					/>

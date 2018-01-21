@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import Item, Comment
+from .models import Item, Comment, Register
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -15,13 +15,19 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'name')
 
 
+class RegisterSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Register
+        fields = ('username', 'email', 'password')
+
+
 class ItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Item
-        fields = ('url', 'name', 'user', 'price', 'amount', 'sold', 'created_at', 'updated_at')
+        fields = ('url', 'name', 'owner', 'price', 'amount', 'sold', 'created_at', 'updated_at')
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
-        fields = ('url', 'writer', 'to', 'header', 'body', 'score', 'created_at', 'updated_at')
+        fields = ('url', 'owner', 'to', 'header', 'body', 'score', 'created_at', 'updated_at')

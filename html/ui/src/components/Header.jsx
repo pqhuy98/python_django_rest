@@ -8,12 +8,12 @@ import { TransitionGroup } from 'react-transition-group'
 
 import * as a from '../actions/auth';
 
-import Header from './Header';
 import Item from './Item';
 import ItemForm from './ItemForm';
+import Banner from '../assets/silk-road-banner.png';
 
 
-class App extends Component {
+class Header extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
@@ -25,25 +25,25 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.props.auth)
+		console.log(Banner)
 		return (
-			<div>
-				<Header/>
-				<div className="item-list-container">
+			<div className="header-top">
+				{this.props.auth.logged ?
+					<div key="1" className="logout" onClick={() => this.logout()}>
+						<span className="me">{this.props.auth.username}</span> -- Log out
+					</div>
+				:
+					<Link key="1" to="/login" className="logout">Login</Link>
+				}
+				<br/>
+				<div className="header"
+					// style={{backgroundImage: `url(${Banner})`}}
+				>
+					<h3>THE SILK ROAD</h3>
 					{this.props.auth.logged && <div>
-							<h1> Post a new item</h1>
-							<ItemForm key="0"/>
-						</div>
-					}
-					<h1>Item list</h1>
-					<TransitionGroup>
-						{this.props.items.map((x, idx) => {
-							return <SlideUp key={x.url}>
-								<Item key={x.url} item={x}/>
-							</SlideUp>
-						})}
-					</TransitionGroup>
-				</div>
+						Hello, <span className="me">{this.props.auth.username}</span> !
+					</div>}
+ 				</div>
 			</div>
 		);
 	}
@@ -62,4 +62,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

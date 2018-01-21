@@ -30,7 +30,24 @@ export function postData(key, data) {
 			.then((res) => {
 				dispatch(getData(key));
 			})
-			.catch((res) => { console.log("error post "+key, res)});
+			.catch((res) => {
+				alert(JSON.stringify(res.response.data));
+			});
+	}	
+}
+
+export const PUT_DATA = "PUT_DATA"
+export function putData(key, data) {
+	console.log(key, data);
+	return (dispatch) => {
+		axios.put(data.url, data)
+			.then((res) => {
+				dispatch(getData(key));
+			})
+			.catch((res) => {
+				alert(JSON.stringify(res.response.data));
+				dispatch(getData(key));
+			});
 	}	
 }
 
@@ -41,6 +58,8 @@ export function deleteData(key, url) {
 			.then((res) => {
 				dispatch(getData(key));
 			})
-			.catch((res) => { console.log("error delete "+key, res)});
+			.catch((res) => {
+				alert(JSON.stringify(res.response.data));
+			});
 	}	
 }

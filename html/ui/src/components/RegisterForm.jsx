@@ -8,12 +8,13 @@ import {
 import * as a from '../actions/auth';
 import * as aData from '../actions/data';
 
-class LoginForm extends Component {
+class RegisterForm extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			username: "root",
-			password: "BigPassword",
+			username: "",
+			password: "",
+			email: "",
 		};
 	}
 
@@ -25,7 +26,8 @@ class LoginForm extends Component {
 	}
 
 	onSubmit() {
-		this.props.dispatch(a.login(this.state)).then((res) => {
+		console.log(this.props)
+		this.props.dispatch(a.register(this.state)).then((dispatch) => {
 			this.props.dispatch(a.checkLogin());
 		}).then((dispatch) => {
 			this.props.dispatch(aData.getData("users"));
@@ -41,15 +43,22 @@ class LoginForm extends Component {
 					this.props.auth.logged && <Redirect to="/"/>
 				}
 				<Link to="/" style={{float:"left"}}>Home</Link>
-				<Link to="/register" style={{float:"right"}}>Register</Link>
+				<Link to="/login" style={{float:"right"}}>Login</Link>
 				<h1>
-				Login
+				Register
 				</h1>
 				<div className="item-form-name">
 					<span className="price-label">Username : </span>
 					<input type="text" placeholder="Name"
 						value={this.state.username}
 						onChange={(e) => this.handleChange("username", e)}
+					/>
+				</div>
+				<div className="item-form-name">
+					<span className="price-label">Email : </span>
+					<input type="text" placeholder="Email"
+						value={this.state.email}
+						onChange={(e) => this.handleChange("email", e)}
 					/>
 				</div>
 				<div className="item-form-name">
@@ -60,7 +69,7 @@ class LoginForm extends Component {
 					/>
 				</div>
 				<button onClick={() => this.onSubmit()} className="comment-form-submit">
-					Login
+					Register
 				</button><br/>
 			</div>
 		);
@@ -80,4 +89,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);

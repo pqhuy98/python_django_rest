@@ -1,1 +1,1 @@
-export const APIBase = "http://localhost:8000"
+export const APIBase = "https://pqhuy98.hopto.org/SilkRoad/api"

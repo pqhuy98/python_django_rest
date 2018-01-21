@@ -33,7 +33,7 @@ class ItemForm extends Component {
 	onSubmit() {
 		var me = this.getMe();
 		var cmt = {
-			user: me.url,
+			owner: me.url,
 			name: this.state.name,
 			price: this.state.price,
 			amount: this.state.amount,
@@ -45,9 +45,6 @@ class ItemForm extends Component {
 	render() {
 		return (
 			<div className="item-form">
-				<h1>
-				Post a new item :
-				</h1>
 				<div className="item-form-name">
 					<span className="price-label">Name : </span>
 					<input type="text" placeholder="Name"

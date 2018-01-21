@@ -37,22 +37,23 @@ function readCookie(name) {
 }
 
 axios.interceptors.request.use(config => {
-	var username = store.getState().authReducer.username;
-	var password = store.getState().authReducer.password
-	config.headers["Authorization"] = "Basic " + btoa(`${username}:${password}`);
-	config.headers["X-CSRFToken"] = readCookie("csrftoken");
-	config.headers["Content-Type"] = "application/json;charset=UTF-8";
+	console.log(store.getState())
+	if (store.getState().authReducer.provideAuth) {
+		var username = store.getState().authReducer.username;
+		var password = store.getState().authReducer.password
+		config.headers["Authorization"] = "Basic " + btoa(`${username}:${password}`);
+		config.headers["X-CSRFToken"] = readCookie("csrftoken");
+		config.headers["Content-Type"] = "application/json;charset=UTF-8";
+	}
 	return config
 });
 
 axios.interceptors.response.use(function (response) {
 	return response;
 }, function (error) {
-	console.log(error.response);
 	if (error.response.status == 403) {
 		store.dispatch(a.clearLogin());
-	} else {
-		return Promise.reject(error);
 	}
+	return Promise.reject(error);
 });
 
